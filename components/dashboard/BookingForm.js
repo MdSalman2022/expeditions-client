@@ -40,36 +40,43 @@ export default function BookingForm({ expeditionId, availableSeats, onClose }) {
       setLoading(false);
     }
   };
-
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+    <div className="fixed inset-0 bg-darkSecondary/80 backdrop-blur-sm flex justify-center items-center z-50">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-lg w-80"
+        className="bg-darkPrimary p-6 rounded-lg shadow-xl shadow-darkSecondary/50 w-80 border border-darkText/10"
       >
-        <h2 className="text-xl font-bold mb-4">Book Expedition</h2>
-        <label className="block text-sm font-medium mb-2">Seats</label>
+        <h2 className="text-xl font-bold mb-6 text-darkText border-b border-darkText/10 pb-4">
+          Book Expedition
+        </h2>
+
+        <label className="block text-sm font-medium mb-2 text-darkText">
+          Number of Seats
+        </label>
+
         <input
           type="number"
           min="1"
           max={availableSeats}
           value={seats}
           onChange={(e) => setSeats(Number(e.target.value))}
-          className="w-full p-2 border rounded mb-4"
+          className="w-full p-2 bg-darkSecondary border border-darkText/10 rounded-lg mb-6 text-darkText focus:ring-1 focus:ring-darkText/30 focus:border-darkText/30"
           required
         />
-        <div className="flex justify-end">
+
+        <div className="flex justify-end gap-3">
           <button
             type="button"
             onClick={onClose}
-            className="mr-2 px-4 py-2 bg-gray-300 rounded"
+            className="px-4 py-2 bg-darkSecondary text-darkText rounded-lg hover:bg-darkSecondary/80 transition-colors duration-200"
           >
             Cancel
           </button>
+
           <button
             type="submit"
             disabled={loading}
-            className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
           >
             {loading ? "Booking..." : "Confirm"}
           </button>

@@ -3,17 +3,48 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --primary: #172554;
+  --secondary: #0f172a;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
 }
 
 body {
-  @apply bg-gray-50;
+  @apply bg-[#0f172a] text-[#e2e8f0];
+}
+
+/* Dark theme styles */
+.bg-dark-primary {
+  @apply bg-[#172554];
+}
+
+.bg-dark-secondary {
+  @apply bg-[#0f172a];
+}
+
+.text-dark-primary {
+  @apply text-[#e2e8f0];
+}
+
+.text-dark-secondary {
+  @apply text-[#94a3b8];
+}
+
+/* Card and container styles */
+.dark-card {
+  @apply bg-[#172554] shadow-lg shadow-[#0f172a]/50;
+}
+
+.dark-container {
+  @apply bg-[#0f172a];
+}
+
+/* Button styles */
+.dark-button {
+  @apply bg-[#172554] hover:bg-[#1e3a8a] text-[#e2e8f0];
+}
+
+/* Input and form styles */
+.dark-input {
+  @apply bg-[#0f172a] border-[#172554] text-[#e2e8f0] focus:ring-[#172554];
 }

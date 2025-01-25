@@ -1,15 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./app/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        darkPrimary: "#172554",
+        darkSecondary: "#0f172a",
+        darkText: "#e2e8f0",
+        darkTextSecondary: "#94a3b8",
       },
     },
   },

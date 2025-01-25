@@ -31,7 +31,7 @@ const MONTHS = [
   "Dec",
 ];
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8"];
+const COLORS = ["#60A5FA", "#34D399", "#FBBF24", "#F87171", "#A78BFA"];
 
 export default function Analytics() {
   const { user } = useAuth();
@@ -81,7 +81,11 @@ export default function Analytics() {
   }, [user, loading, router]);
 
   if (loading) {
-    return <div>Loading analytics...</div>;
+    return (
+      <div className="min-h-screen bg-darkSecondary flex items-center justify-center">
+        <div className="text-darkText text-lg">Loading analytics...</div>
+      </div>
+    );
   }
 
   if (!user || user.role !== "admin") {
@@ -89,26 +93,39 @@ export default function Analytics() {
   }
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Analytics Dashboard</h1>
+      <h1 className="text-3xl font-bold mb-8 text-darkText">
+        Analytics Dashboard
+      </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold mb-4">Monthly Bookings</h2>
+        <div className="bg-darkPrimary p-6 rounded-lg shadow-lg shadow-darkSecondary/50">
+          <h2 className="text-xl font-semibold mb-4 text-darkText">
+            Monthly Bookings
+          </h2>
           <div className="h-[400px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={bookingsPerMonth}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="bookings" fill="#8884d8" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                <XAxis dataKey="name" stroke="#94A3B8" />
+                <YAxis stroke="#94A3B8" />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#172554",
+                    border: "none",
+                    borderRadius: "0.375rem",
+                    color: "#E2E8F0",
+                  }}
+                />
+                <Bar dataKey="bookings" fill="#60A5FA" />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold mb-4">Popular Destinations</h2>
+        <div className="bg-darkPrimary p-6 rounded-lg shadow-lg shadow-darkSecondary/50">
+          <h2 className="text-xl font-semibold mb-4 text-darkText">
+            Popular Destinations
+          </h2>
           <div className="h-[400px]">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -128,7 +145,14 @@ export default function Analytics() {
                     />
                   ))}
                 </Pie>
-                <Tooltip />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#172554",
+                    border: "none",
+                    borderRadius: "0.375rem",
+                    color: "#E2E8F0",
+                  }}
+                />
               </PieChart>
             </ResponsiveContainer>
           </div>

@@ -42,22 +42,31 @@ export default function HomePage() {
   ];
 
   if (loading)
-    return <div className="text-center p-8">Loading expeditions...</div>;
+    return (
+      <div className="text-dark-primary text-center p-8">
+        Loading expeditions...
+      </div>
+    );
+
   if (error) return <div className="text-red-500 p-8">Error: {error}</div>;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Available Expeditions</h1>
+    <div className="dark-container max-w-7xl mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-8 text-dark-primary">
+        Available Expeditions
+      </h1>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="dark-card mb-8 p-6 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium mb-2">Destination</label>
+          <label className="block text-dark-primary text-sm font-medium mb-2">
+            Destination
+          </label>
           <select
             value={filters.destination}
             onChange={(e) =>
               setFilters({ ...filters, destination: e.target.value })
             }
-            className="w-full p-2 border rounded-md"
+            className="dark-input w-full p-2 rounded-md"
           >
             <option value="">All Destinations</option>
             {uniqueDestinations.map((dest) => (
@@ -69,21 +78,23 @@ export default function HomePage() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">Start Date</label>
+          <label className="block text-dark-primary text-sm font-medium mb-2">
+            Start Date
+          </label>
           <input
             type="date"
             value={filters.startDate}
             onChange={(e) =>
               setFilters({ ...filters, startDate: e.target.value })
             }
-            className="w-full p-2 border rounded-md"
+            className="dark-input w-full p-2 rounded-md"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredExpeditions.length === 0 ? (
-          <div className="col-span-full text-center text-gray-500">
+          <div className="col-span-full text-center text-dark-secondary">
             No expeditions found matching your criteria
           </div>
         ) : (
